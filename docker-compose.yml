@@ -5,11 +5,12 @@ services:
       context: Gestion-Patients.api
       dockerfile: Dockerfile
 
-  mysql:
-    image: mysql:latest
-    container_name: MySQL
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: SQL-Server
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
+      - "ACCEPT_EULA=Y"
+      - "MSSQL_SA_PASSWORD=Gk3vLNdhBQf9HMQc"
     ports:
       - "3306:3306"
     volumes:

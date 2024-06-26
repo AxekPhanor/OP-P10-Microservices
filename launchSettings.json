@@ -8,7 +8,7 @@
       "serviceActions": {
         "gestion-patients.api": "StartDebugging",
         "angular-app.client": "StartWithoutDebugging",
-        "mysql": "StartWithoutDebugging",
+        "sqlserver": "StartWithoutDebugging",
         "ocelot": "StartDebugging"
       }
     }
