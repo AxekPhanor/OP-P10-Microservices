@@ -1,0 +1,39 @@
+services:
+  gestion-patients.api:
+    image: gestion-patients.api
+    build:
+      context: Gestion-Patients.api
+      dockerfile: Dockerfile
+
+  mysql:
+    image: mysql:latest
+    container_name: MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+  ocelot:
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Developement"
+    build:
+      context: Ocelot-Api.gateway
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - gestion-patients.api
+  
+  angular-app.client:
+    image: angular-app.client
+    container_name: Angular-App.client
+    build:
+      context: Angular-App.client
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+  
+
+volumes:
+  mysql-data:

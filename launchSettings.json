@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "None",
+      "composeLaunchServiceName": "gestion-patients.api",
+      "serviceActions": {
+        "gestion-patients.api": "StartDebugging",
+        "angular-app.client": "StartWithoutDebugging",
+        "mysql": "StartWithoutDebugging",
+        "ocelot": "StartDebugging"
+      }
+    }
+  }
+}

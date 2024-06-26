@@ -1,0 +1,23 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/ocelot/WeatherForecast",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gestion-patients.api",
+          "Port": 8081
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000",
+    "RateLimitOptions": {
+      "DisableRateLimitHeaders": true
+    }
+  }
+}
