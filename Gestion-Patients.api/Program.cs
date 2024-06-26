@@ -1,11 +1,22 @@
+using Gestion_Patients.api.Data;
+using Gestion_Patients.api.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<PatientContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Gestion-Patients.db")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<PatientContext>()
+        .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();
 
@@ -14,6 +25,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbcontext = scope.ServiceProvider.GetRequiredService<PatientContext>();
+    var authService = scope.ServiceProvider.GetService<IAuthenticationService>();
+
+    dbcontext.Database.EnsureCreated();
+    var result = await authService!.EnsureAdminCreated();
+    Console.WriteLine(result);
 }
 
 app.UseHttpsRedirection();
