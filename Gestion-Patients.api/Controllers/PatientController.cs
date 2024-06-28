@@ -1,6 +1,7 @@
 ﻿using Gestion_Patients.api.Models;
 using Gestion_Patients.api.Services;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace Gestion_Patients.api.Controllers
 {
@@ -24,7 +25,8 @@ namespace Gestion_Patients.api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+                return Problem();
             }
         }
 
@@ -43,7 +45,8 @@ namespace Gestion_Patients.api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+                return Problem();
             }
         }
 
@@ -62,7 +65,8 @@ namespace Gestion_Patients.api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+                return Problem();
             }
         }
 
@@ -81,7 +85,8 @@ namespace Gestion_Patients.api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+                return Problem();
             }
         }
     }
