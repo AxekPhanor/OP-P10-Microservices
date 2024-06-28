@@ -1,4 +1,5 @@
 using Gestion_Patients.api.Data;
+using Gestion_Patients.api.Repositories;
 using Gestion_Patients.api.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IGenderRepository, GenderRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IPatientService, PatientService>();
 
 var app = builder.Build();
 
