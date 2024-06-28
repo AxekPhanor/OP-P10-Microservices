@@ -39,16 +39,22 @@ namespace Gestion_Patients.api.Services
                 {
                     return null;
                 }
-                return new PatientOutputModel
+
+                var output = new PatientOutputModel
                 {
                     Id = id,
                     FirstName = patient.FirstName,
                     LastName = patient.LastName,
                     DateOfBirth = patient.DateOfBirth,
                     Gender = patient.Gender.Name,
-                    Address = patient.Address.Name,
+                    
                     PhoneNumber = patient.PhoneNumber,
                 };
+                if (patient.Address is not null)
+                {
+                    output.Address = patient.Address.Name;
+                }
+                return output;
             }
             catch
             {
