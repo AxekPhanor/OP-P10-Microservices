@@ -33,7 +33,7 @@ services:
       context: Angular-App.client
       dockerfile: Dockerfile
     ports:
-      - "4200:4200"
+      - "4277:4277"
   
 
 volumes:
