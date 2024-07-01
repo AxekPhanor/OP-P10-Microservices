@@ -8,5 +8,6 @@ namespace Gestion_Patients.api.Repositories
         Task<Patient?> Read(int id);
         Task<Patient?> Update(Patient patient);
         Task<Patient?> Delete(int id);
+        Task<List<Patient>> List();
     }
 }

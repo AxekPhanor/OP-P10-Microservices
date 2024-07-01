@@ -89,5 +89,20 @@ namespace Gestion_Patients.api.Controllers
                 return Problem();
             }
         }
+
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                return Ok(await patientService.All());
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+                return Problem();
+            }
+        }
     }
 }

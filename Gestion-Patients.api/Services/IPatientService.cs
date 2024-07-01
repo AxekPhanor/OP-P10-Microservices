@@ -8,5 +8,6 @@ namespace Gestion_Patients.api.Services
         Task<PatientOutputModel?> GetById(int id);
         Task<PatientOutputModel?> Update(PatientIntputModel patientModel, int id);
         Task<PatientOutputModel?> Delete(int id);
+        Task<List<PatientOutputModel>> All();
     }
 }

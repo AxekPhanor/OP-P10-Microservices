@@ -12,6 +12,14 @@ namespace Gestion_Patients.api.Repositories
             this.dbContext = dbContext;
         }
 
+        public async Task<List<Patient>> List() 
+        {
+            return await dbContext.Patients
+            .Include(p => p.Gender)
+            .Include(p => p.Address)
+            .ToListAsync();
+        }
+
         public async Task<Patient> Create(Patient patient)
         {
             try
@@ -94,5 +102,7 @@ namespace Gestion_Patients.api.Repositories
                 throw;
             }
         }
+
+        
     }
 }

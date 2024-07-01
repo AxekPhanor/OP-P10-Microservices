@@ -62,6 +62,24 @@ namespace Gestion_Patients.api.Services
             }
         }
 
+        public async Task<List<PatientOutputModel>> All()
+        {
+            try
+            {
+                var patients = await patientRepository.List();
+                var output = new List<PatientOutputModel>();
+                foreach (var patient in patients)
+                {
+                    output.Add(ToOutputModel(patient));
+                }
+                return output;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public async Task<PatientOutputModel?> GetById(int id)
         {
             try
