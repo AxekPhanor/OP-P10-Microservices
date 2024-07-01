@@ -1,5 +1,6 @@
 ﻿using Gestion_Patients.api.Models;
 using Gestion_Patients.api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -7,6 +8,7 @@ namespace Gestion_Patients.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService patientService;
