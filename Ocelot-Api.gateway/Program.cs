@@ -8,6 +8,25 @@ using Ocelot.Middleware;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+// Configure Cors
+builder.Services.AddCors(options =>
+{
+    var clientAppUrl = builder.Configuration.GetValue<string>("ClientAppUrl");
+
+    options.AddPolicy("CorsPolicy",
+        policy =>
+        {
+            if (!string.IsNullOrEmpty(clientAppUrl))
+            {
+                policy.WithOrigins(clientAppUrl);
+            }
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+            policy.AllowCredentials();
+    });
+});
+
+
 // Configure health checks
 builder.Services
     .AddHealthChecks()
@@ -22,6 +41,7 @@ builder.Configuration.AddJsonFile("ocelot.json");
 WebApplication app = builder.Build();
 
 app.UseRouting();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 app.UseEndpoints(_ => { });
 
