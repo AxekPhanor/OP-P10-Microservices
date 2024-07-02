@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-login',
@@ -12,9 +13,14 @@ export class PageLoginComponent {
     controlUsername: new FormControl(''),
     controlPassword: new FormControl(''),
   });
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService, private router: Router) {
 
   }
+
+  ngOnInit() {
+    this.authService.isConnected().subscribe({ next: (value) => { console.log(value) } });
+  }
+
   onSubmit() {
     const username = this.form.value.controlUsername;
     const password = this.form.value.controlPassword;
@@ -22,11 +28,10 @@ export class PageLoginComponent {
       this.authService.login(username, password).subscribe({
         next: (signInResult) => {
           if (signInResult.succeeded) {
-            console.log("connexion réussi");
+            this.router.navigate(['/', 'patients']);
           }
         }
       })
     }
-    
   }
 }
