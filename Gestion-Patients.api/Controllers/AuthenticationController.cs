@@ -1,6 +1,7 @@
 ﻿using Gestion_Patients.api.Models;
 using Gestion_Patients.api.Services;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace Gestion_Patients.api.Controllers
 {
@@ -33,6 +34,21 @@ namespace Gestion_Patients.api.Controllers
         {
             await authenticationService.Logout();
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("IsConnected")]
+        public IActionResult IsConnected()
+        {
+            try
+            {
+                return Ok(authenticationService.IsConnected(User));
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
+            }
+            return BadRequest();
         }
     }
 }

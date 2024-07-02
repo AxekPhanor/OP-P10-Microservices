@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Gestion_Patients.api.Services
 {
@@ -6,10 +7,12 @@ namespace Gestion_Patients.api.Services
     {
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
-        public AuthenticationService(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager) 
+        private readonly IHttpContextAccessor httpContextAccessor;
+        public AuthenticationService(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor) 
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.httpContextAccessor = httpContextAccessor;
         }
         public async Task<SignInResult> Login(string username, string password)
         {
@@ -42,6 +45,11 @@ namespace Gestion_Patients.api.Services
                 return true;
             }
             return false;
+        }
+
+        public bool IsConnected(ClaimsPrincipal claimsPrincipal)
+        {
+            return signInManager.IsSignedIn(claimsPrincipal);
         }
     }
 }

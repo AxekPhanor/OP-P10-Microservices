@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Gestion_Patients.api.Services
 {
@@ -7,5 +8,6 @@ namespace Gestion_Patients.api.Services
         Task<SignInResult> Login(string username, string password);
         Task Logout();
         Task<bool> EnsureAdminCreated();
+        bool IsConnected(ClaimsPrincipal claimsPrincipal);
     }
 }
