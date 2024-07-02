@@ -1,1 +1,12 @@
-<p>Salut !</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p id="form-title">Connexion</p>
+  <mat-form-field>
+    <mat-label >Nom d'utilisateur</mat-label>
+    <input matInput formControlName="controlUsername" required autocomplete="off">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label >Mot de passe</mat-label>
+    <input matInput formControlName="controlPassword" required type="password">
+  </mat-form-field>
+  <button mat-stroked-button type="submit" [disabled]="!form.valid">Se connecter</button>
+</form>
