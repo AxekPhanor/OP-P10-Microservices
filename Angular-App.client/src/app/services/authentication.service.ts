@@ -18,14 +18,14 @@ export class AuthenticationService extends BaseService {
     });
   }
 
-  logout() {
+  logout(): Observable<any> {
     return this.http.get(`${this.url}/logout`, {
       withCredentials: true
     })
   }
 
-  isConnected() {
-    return this.http.get(`${this.url}/isconnected`, {
+  isConnected(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.url}/isconnected`, {
       withCredentials: true
     })
   }
