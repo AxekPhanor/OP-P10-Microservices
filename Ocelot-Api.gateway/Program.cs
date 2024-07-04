@@ -1,5 +1,5 @@
 using HealthChecks.UI.Client;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -12,6 +12,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     var clientAppUrl = builder.Configuration.GetValue<string>("ClientAppUrl");
+    var GestionPatientsApiUrl = builder.Configuration.GetValue<string>("GestionPatientsApiUrl");
 
     options.AddPolicy("CorsPolicy",
         policy =>
@@ -20,12 +21,15 @@ builder.Services.AddCors(options =>
             {
                 policy.WithOrigins(clientAppUrl);
             }
+            if (!string.IsNullOrEmpty(GestionPatientsApiUrl))
+            {
+                policy.WithOrigins(GestionPatientsApiUrl);
+            }
             policy.AllowAnyMethod();
             policy.AllowAnyHeader();
             policy.AllowCredentials();
-    });
+        });
 });
-
 
 // Configure health checks
 builder.Services

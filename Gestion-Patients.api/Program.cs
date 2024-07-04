@@ -1,6 +1,7 @@
 using Gestion_Patients.api.Data;
 using Gestion_Patients.api.Repositories;
 using Gestion_Patients.api.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<PatientContext>(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<PatientContext>()
         .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie();
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

@@ -19,7 +19,7 @@ services:
     environment:
       - "ASPNETCORE_ENVIRONMENT=Developement"
       - "ClientAppUrl=http://localhost:4277"
-  
+      - "GestionPatientsApiUrl=https://localhost:8081"
     build:
       context: Ocelot-Api.gateway
       dockerfile: Dockerfile
