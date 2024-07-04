@@ -1,8 +1,6 @@
 using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 

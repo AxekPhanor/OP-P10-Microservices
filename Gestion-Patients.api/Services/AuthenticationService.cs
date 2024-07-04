@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace Gestion_Patients.api.Services
 {
@@ -8,25 +11,51 @@ namespace Gestion_Patients.api.Services
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IHttpContextAccessor httpContextAccessor;
-        public AuthenticationService(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor) 
+        private readonly IConfiguration config;
+        public AuthenticationService(
+            SignInManager<IdentityUser> signInManager, 
+            UserManager<IdentityUser> userManager, 
+            IHttpContextAccessor httpContextAccessor, 
+            IConfiguration config) 
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.httpContextAccessor = httpContextAccessor;
+            this.config = config;
         }
-        public async Task<SignInResult> Login(string username, string password)
+        public async Task<string> Login(string username, string password)
         {
-            var user = await userManager.FindByNameAsync(username);
-            if(user is not null)
+            try
             {
-                return await signInManager.PasswordSignInAsync(user, password, false, false);
+                var user = await userManager.FindByNameAsync(username);
+                if (user is null)
+                {
+                    return "";
+                }
+                var result = await userManager.CheckPasswordAsync(user, password);
+                if (result)
+                {
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes(config["Jwt:SecretKey"]!);
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(
+                        [
+                            new (ClaimTypes.Name, user.UserName!),
+                            new (ClaimTypes.Role, "organizer")
+                        ]),
+                        Expires = DateTime.UtcNow.AddHours(24),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    return tokenHandler.WriteToken(token);
+                }
             }
-            return SignInResult.Failed;
-        }
-
-        public async Task Logout()
-        {
-            await signInManager.SignOutAsync();
+            catch
+            {
+                throw;
+            }
+            return "";
         }
 
         public async Task<bool> EnsureAdminCreated()
@@ -42,14 +71,10 @@ namespace Gestion_Patients.api.Services
             var result = await userManager.CreateAsync(user, "6yb64nOav4M?JmHzn");
             if (result.Succeeded)
             {
+                await userManager.AddToRoleAsync(user, "organizer");
                 return true;
             }
             return false;
-        }
-
-        public bool IsConnected(ClaimsPrincipal claimsPrincipal)
-        {
-            return signInManager.IsSignedIn(claimsPrincipal);
         }
     }
 }

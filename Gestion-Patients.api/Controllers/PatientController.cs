@@ -8,7 +8,7 @@ namespace Gestion_Patients.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize("Bearer")]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService patientService;

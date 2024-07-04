@@ -20,35 +20,19 @@ namespace Gestion_Patients.api.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-            var result = await authenticationService.Login(loginModel.Username, loginModel.Password);
-            if (result.Succeeded) 
-            { 
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet]
-        [Route("Logout")]
-        public async Task<IActionResult> Logout()
-        {
-            await authenticationService.Logout();
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("IsConnected")]
-        public IActionResult IsConnected()
-        {
             try
             {
-                return Ok(authenticationService.IsConnected(User));
+                var token = await authenticationService.Login(loginModel.Username, loginModel.Password);
+                if (token != "")
+                {
+                    return Ok(token);
+                }
             }
             catch (Exception ex)
             {
                 Log.Error($"{ex.StackTrace} : {ex.Message}");
             }
-            return BadRequest();
+            return NotFound();
         }
     }
 }
