@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-page-login',
@@ -13,12 +14,12 @@ export class PageLoginComponent {
     controlUsername: new FormControl(''),
     controlPassword: new FormControl(''),
   });
-  constructor(private authService: AuthenticationService, private router: Router) {
-
+  constructor(private authService: AuthenticationService,
+    private localStorageService: LocalStorageService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.authService.isConnected().subscribe({ next: (value) => { console.log(value) } });
   }
 
   onSubmit() {
@@ -26,8 +27,9 @@ export class PageLoginComponent {
     const password = this.form.value.controlPassword;
     if (username != null && password != null) {
       this.authService.login(username, password).subscribe({
-        next: (signInResult) => {
-          if (signInResult.succeeded) {
+        next: (token) => {
+          if (token != "") {
+            this.localStorageService.setItem("token", token);
             this.router.navigate(['/', 'patients']);
           }
         }

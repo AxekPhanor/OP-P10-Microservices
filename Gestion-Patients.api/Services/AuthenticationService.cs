@@ -10,16 +10,19 @@ namespace Gestion_Patients.api.Services
     {
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IConfiguration config;
         public AuthenticationService(
             SignInManager<IdentityUser> signInManager, 
-            UserManager<IdentityUser> userManager, 
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IHttpContextAccessor httpContextAccessor, 
             IConfiguration config) 
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.roleManager = roleManager;
             this.httpContextAccessor = httpContextAccessor;
             this.config = config;
         }
@@ -68,6 +71,10 @@ namespace Gestion_Patients.api.Services
             {
                 UserName = "admin"
             };
+            if (!await roleManager.RoleExistsAsync("organizer"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("organizer"));
+            }
             var result = await userManager.CreateAsync(user, "6yb64nOav4M?JmHzn");
             if (result.Succeeded)
             {
