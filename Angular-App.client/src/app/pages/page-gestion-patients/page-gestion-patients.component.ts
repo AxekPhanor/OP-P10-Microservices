@@ -18,7 +18,7 @@ export class PageGestionPatientsComponent {
   }
 
   private getAll() {
-    this.gestionPatientsService.GetAll().subscribe({
+    this.gestionPatientsService.getAll().subscribe({
       next: value => {
         this.patients = value as PatientOutput[];
         this.patientObservable = of(this.patients.map(patient => patient));
