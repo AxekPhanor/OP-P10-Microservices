@@ -14,14 +14,14 @@ export class GestionPatientsService extends BaseService {
     super(http);
   }
 
-  GetAll(): Observable<Array<PatientOutput>> {
+  getAll(): Observable<Array<PatientOutput>> {
     return this.http.get<Array<PatientOutput>>(`${this.url}/patients`, {
       headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
       withCredentials: true
     });
   }
 
-  Create(patient: PatientInput): Observable<PatientOutput> {
+  create(patient: PatientInput): Observable<PatientOutput> {
     return this.http.post<PatientOutput>(`${this.url}/create`, {
       patient: patient
     },
@@ -31,7 +31,7 @@ export class GestionPatientsService extends BaseService {
       });
   }
 
-  Update(patient: PatientInput, id: number): Observable<PatientOutput> {
+  update(patient: PatientInput, id: number): Observable<PatientOutput> {
     return this.http.put<PatientOutput>(`${this.url}/update?id=${id}`, {
       patient: patient
     },
@@ -41,14 +41,14 @@ export class GestionPatientsService extends BaseService {
       });
   }
 
-  Get(id: number): Observable<PatientOutput> {
+  get(id: number): Observable<PatientOutput> {
     return this.http.get<PatientOutput>(`${this.url}/get?id=${id}`, {
       headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
       withCredentials: true
     });
   }
 
-  Delete(id: number): Observable<PatientOutput> {
+  delete(id: number): Observable<PatientOutput> {
     return this.http.delete<PatientOutput>(`${this.url}/delete?id=${id}`, {
       headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
       withCredentials: true
