@@ -3,6 +3,6 @@ export interface PatientInput {
   lastName: string
   dateOfBirth: string
   gender: string
-  address: string
-  phoneNumber: string
+  address: string | null
+  phoneNumber: string | null
 }

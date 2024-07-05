@@ -22,8 +22,13 @@ export class GestionPatientsService extends BaseService {
   }
 
   create(patient: PatientInput): Observable<PatientOutput> {
-    return this.http.post<PatientOutput>(`${this.url}/create`, {
-      patient: patient
+    return this.http.post<PatientOutput>(`${this.url}/patient/create`, {
+        FirstName: patient.firstName,
+        LastName: patient.lastName,
+        DateOfBirth: patient.dateOfBirth,
+        Gender: patient.gender,
+        Address: patient.address,
+        PhoneNumber: patient.phoneNumber
     },
       {
         headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
@@ -32,8 +37,13 @@ export class GestionPatientsService extends BaseService {
   }
 
   update(patient: PatientInput, id: number): Observable<PatientOutput> {
-    return this.http.put<PatientOutput>(`${this.url}/update?id=${id}`, {
-      patient: patient
+    return this.http.put<PatientOutput>(`${this.url}/patient/update?id=${id}`, {
+      FirstName: patient.firstName,
+      LastName: patient.lastName,
+      DateOfBirth: patient.dateOfBirth,
+      Gender: patient.gender,
+      Address: patient.address,
+      PhoneNumber: patient.phoneNumber
     },
       {
         headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
@@ -42,14 +52,14 @@ export class GestionPatientsService extends BaseService {
   }
 
   get(id: number): Observable<PatientOutput> {
-    return this.http.get<PatientOutput>(`${this.url}/get?id=${id}`, {
+    return this.http.get<PatientOutput>(`${this.url}/patient/get?id=${id}`, {
       headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
       withCredentials: true
     });
   }
 
   delete(id: number): Observable<PatientOutput> {
-    return this.http.delete<PatientOutput>(`${this.url}/delete?id=${id}`, {
+    return this.http.delete<PatientOutput>(`${this.url}/patient/delete?id=${id}`, {
       headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
       withCredentials: true
     });

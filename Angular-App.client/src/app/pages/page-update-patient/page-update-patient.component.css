@@ -1,0 +1,14 @@
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
