@@ -7,18 +7,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PageGestionPatientsComponent } from './pages/page-gestion-patients/page-gestion-patients.component';
+import { PageCreationPatientComponent } from './pages/page-creation-patient/page-creation-patient.component';
+import { PageCreatePatientComponent } from './pages/page-create-patient/page-create-patient.component';
+import { PageUpdatePatientComponent } from './pages/page-update-patient/page-update-patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageLoginComponent,
-    PageGestionPatientsComponent
+    PageGestionPatientsComponent,
+    PageCreationPatientComponent,
+    PageCreatePatientComponent,
+    PageUpdatePatientComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,8 @@ import { PageGestionPatientsComponent } from './pages/page-gestion-patients/page
     MatButtonModule,
     ReactiveFormsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()
