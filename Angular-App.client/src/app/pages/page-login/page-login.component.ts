@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { Token } from '../../models/token';
 
 @Component({
   selector: 'app-page-login',
@@ -27,13 +28,14 @@ export class PageLoginComponent {
     const password = this.form.value.controlPassword;
     if (username != null && password != null) {
       this.authService.login(username, password).subscribe({
-        next: (token) => {
-          if (token != "") {
-            this.localStorageService.setItem("token", token);
-            this.router.navigate(['/', 'patients']);
-          }
+        next: (token: any) => {
+          this.localStorageService.setItem("token", token.value);
+          this.router.navigate(['/', 'patients']);
+        },
+        error: (err) => {
+          console.error('Login error', err);
         }
-      })
+      });
     }
   }
 }

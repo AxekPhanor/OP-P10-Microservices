@@ -25,7 +25,7 @@ namespace Gestion_Patients.api.Controllers
                 var token = await authenticationService.Login(loginModel.Username, loginModel.Password);
                 if (token != "")
                 {
-                    return Ok(new { token = token });
+                    return Ok(new { value = token });
                 }
             }
             catch (Exception ex)
