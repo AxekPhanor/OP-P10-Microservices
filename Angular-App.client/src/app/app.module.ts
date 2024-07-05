@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PageGestionPatientsComponent } from './pages/page-gestion-patients/page-gestion-patients.component';
-import { PageCreationPatientComponent } from './pages/page-creation-patient/page-creation-patient.component';
 import { PageCreatePatientComponent } from './pages/page-create-patient/page-create-patient.component';
 import { PageUpdatePatientComponent } from './pages/page-update-patient/page-update-patient.component';
 
@@ -23,7 +22,6 @@ import { PageUpdatePatientComponent } from './pages/page-update-patient/page-upd
     AppComponent,
     PageLoginComponent,
     PageGestionPatientsComponent,
-    PageCreationPatientComponent,
     PageCreatePatientComponent,
     PageUpdatePatientComponent
   ],
