@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PatientContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Localdb")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Gestion-Patients.db")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<PatientContext>()
