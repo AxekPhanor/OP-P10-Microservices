@@ -7,13 +7,11 @@ namespace Gestion_Patients.api.Services
     public class PatientService : IPatientService
     {
         private readonly IPatientRepository patientRepository;
-        private readonly IGenderRepository genderRepository;
         private readonly IAddressRepository addressRepository;
 
-        public PatientService(IPatientRepository patientRepository, IGenderRepository genderRepository, IAddressRepository addressRepository)
+        public PatientService(IPatientRepository patientRepository, IAddressRepository addressRepository)
         {
             this.patientRepository = patientRepository;
-            this.genderRepository = genderRepository;
             this.addressRepository = addressRepository;
         }
 
@@ -39,22 +37,7 @@ namespace Gestion_Patients.api.Services
                 {
                     return null;
                 }
-
-                var output = new PatientOutputModel
-                {
-                    Id = id,
-                    FirstName = patient.FirstName,
-                    LastName = patient.LastName,
-                    DateOfBirth = patient.DateOfBirth,
-                    Gender = patient.Gender.Name,
-                    
-                    PhoneNumber = patient.PhoneNumber,
-                };
-                if (patient.Address is not null)
-                {
-                    output.Address = patient.Address.Name;
-                }
-                return output;
+                return ToOutputModel(patient);
             }
             catch
             {
@@ -122,6 +105,7 @@ namespace Gestion_Patients.api.Services
                 FirstName = patientModel.FirstName,
                 LastName = patientModel.LastName,
                 DateOfBirth = patientModel.DateOfBirth,
+                Gender = patientModel.Gender,
             };
 
             if (patientModel.Address is not null)
@@ -130,10 +114,6 @@ namespace Gestion_Patients.api.Services
                 patient.Address = address;
                 patient.AddressId = address.Id;
             }
-
-            var gender = await genderRepository.Create(new Gender { Name = patientModel.Gender });
-            patient.Gender = gender;
-            patient.GenderId = gender.Id;
 
             if (patientModel.PhoneNumber is not null)
             {
@@ -150,7 +130,7 @@ namespace Gestion_Patients.api.Services
                 FirstName = patient.FirstName,
                 LastName = patient.LastName,
                 DateOfBirth = patient.DateOfBirth,
-                Gender = patient.Gender.Name,
+                Gender = patient.Gender,
             };
             if (patient.Address is not null) 
             { 

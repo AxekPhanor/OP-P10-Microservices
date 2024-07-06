@@ -15,7 +15,6 @@ namespace Gestion_Patients.api.Repositories
         public async Task<List<Patient>> List() 
         {
             return await dbContext.Patients
-            .Include(p => p.Gender)
             .Include(p => p.Address)
             .ToListAsync();
         }
@@ -39,7 +38,6 @@ namespace Gestion_Patients.api.Repositories
             try
             {
                 var patient = await dbContext.Patients
-                    .Include(p => p.Gender)
                     .Include(p => p.Address)
                     .FirstOrDefaultAsync(patient => patient.Id == id);
                 if (patient is not null)
@@ -60,7 +58,6 @@ namespace Gestion_Patients.api.Repositories
             try
             {
                 var patient = await dbContext.Patients
-                    .Include(p => p.Gender)
                     .Include(p => p.Address)
                     .FirstOrDefaultAsync(patient => patient.Id == id);
                 return patient;
@@ -76,7 +73,6 @@ namespace Gestion_Patients.api.Repositories
             try
             {
                 var patientToUpdate = await dbContext.Patients
-                    .Include(p => p.Gender)
                     .Include(p => p.Address)
                     .FirstOrDefaultAsync(p => p.Id == patient.Id);
                 if (patientToUpdate is not null)
