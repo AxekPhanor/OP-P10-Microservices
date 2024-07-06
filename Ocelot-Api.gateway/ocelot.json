@@ -14,9 +14,9 @@
       "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
-      "UpstreamPathTemplate": "/gateway/logout",
+      "UpstreamPathTemplate": "/gateway/isconnected",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/Logout",
+      "DownstreamPathTemplate": "/api/Authentication/IsConnected",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -27,9 +27,9 @@
       "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
-      "UpstreamPathTemplate": "/gateway/isconnected",
+      "UpstreamPathTemplate": "/gateway/logout",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/IsConnected",
+      "DownstreamPathTemplate": "/api/Authentication/Logout",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
