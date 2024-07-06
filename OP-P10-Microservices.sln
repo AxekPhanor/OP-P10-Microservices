@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestion-Patients.api", "Gestion-Patients.api\Gestion-Patients.api.csproj", "{5AA76A57-1E81-4A3E-B26D-316C4B52CB1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gestion-Patients.api", "Gestion-Patients.api\Gestion-Patients.api.csproj", "{5AA76A57-1E81-4A3E-B26D-316C4B52CB1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ocelot-Api.gateway", "Ocelot-Api.gateway\Ocelot-Api.gateway.csproj", "{2C37AAEE-3010-41CB-9C57-38864079394A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelot-Api.gateway", "Ocelot-Api.gateway\Ocelot-Api.gateway.csproj", "{2C37AAEE-3010-41CB-9C57-38864079394A}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{04951366-C968-424D-9FA8-CF2FEF4F7C4E}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Angular-App.client", "Angular-App.client\Angular-App.client.esproj", "{56F5B114-012F-4830-933E-E1D79DFBEC38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestion-Notes.api", "Gestion-Notes.api\Gestion-Notes.api.csproj", "{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{56F5B114-012F-4830-933E-E1D79DFBEC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56F5B114-012F-4830-933E-E1D79DFBEC38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56F5B114-012F-4830-933E-E1D79DFBEC38}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

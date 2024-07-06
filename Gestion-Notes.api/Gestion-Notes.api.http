@@ -1,0 +1,6 @@
+@Gestion_Notes.api_HostAddress = http://localhost:5095
+
+GET {{Gestion_Notes.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

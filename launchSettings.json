@@ -9,7 +9,8 @@
         "gestion-patients.api": "StartDebugging",
         "angular-app.client": "StartWithoutDebugging",
         "sqlserver": "StartWithoutDebugging",
-        "ocelot": "StartDebugging"
+        "ocelot": "StartDebugging",
+        "gestion-notes.api": "StartDebugging"
       }
     }
   }

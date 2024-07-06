@@ -38,5 +38,11 @@ services:
       - "4277:4277"
   
 
+  gestion-notes.api:
+    image: ${DOCKER_REGISTRY-}gestionnotesapi
+    build:
+      context: .
+      dockerfile: Gestion-Notes.api/Dockerfile
+
 volumes:
   mysql-data:
