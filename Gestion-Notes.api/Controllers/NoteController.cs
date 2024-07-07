@@ -1,11 +1,13 @@
 ﻿using Gestion_Notes.api.Models;
 using Gestion_Notes.api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gestion_Notes.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Bearer")]
     public class NoteController : ControllerBase
     {
         private readonly INoteService noteService;

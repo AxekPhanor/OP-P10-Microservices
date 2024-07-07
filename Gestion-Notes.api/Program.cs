@@ -1,12 +1,51 @@
 using Gestion_Notes.api.Data;
 using Gestion_Notes.api.Repositories;
 using Gestion_Notes.api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<IdentityDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Gestion-Patients.db")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<IdentityDbContext>()
+        .AddDefaultTokenProviders();
+
+var jwt = builder.Configuration.GetSection("Jwt");
+var key = Encoding.ASCII.GetBytes(jwt["SecretKey"]!);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Bearer", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireRole("organizer");
+        policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
