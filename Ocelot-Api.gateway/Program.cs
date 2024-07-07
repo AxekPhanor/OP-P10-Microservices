@@ -11,7 +11,7 @@ builder.Services.AddCors(options =>
 {
     var clientAppUrl = builder.Configuration.GetValue<string>("ClientAppUrl");
     var GestionPatientsApiUrl = builder.Configuration.GetValue<string>("GestionPatientsApiUrl");
-
+    var GestionNotesApiUrl = builder.Configuration.GetValue<string>("GestionNotesApiUrl");
     options.AddPolicy("CorsPolicy",
         policy =>
         {
@@ -22,6 +22,10 @@ builder.Services.AddCors(options =>
             if (!string.IsNullOrEmpty(GestionPatientsApiUrl))
             {
                 policy.WithOrigins(GestionPatientsApiUrl);
+            }
+            if (!string.IsNullOrEmpty(GestionNotesApiUrl))
+            {
+                policy.WithOrigins(GestionNotesApiUrl);
             }
             policy.AllowAnyMethod();
             policy.AllowAnyHeader();

@@ -9,17 +9,19 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: SQL-Server
     environment:
-      - "ACCEPT_EULA=Y"
-      - "MSSQL_SA_PASSWORD=Gk3vLNdhBQf9HMQc"
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Gk3vLNdhBQf9HMQc
     ports:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+
   ocelot:
     environment:
-      - "ASPNETCORE_ENVIRONMENT=Developement"
-      - "ClientAppUrl=http://localhost:4277"
-      - "GestionPatientsApiUrl=https://localhost:8081"
+      - ASPNETCORE_ENVIRONMENT=Developement
+      - ClientAppUrl=http://localhost:4277
+      - GestionPatientsApiUrl=https://localhost:8081
+      - GestionNotesApiUrl=https://localhost:4041
     build:
       context: Ocelot-Api.gateway
       dockerfile: Dockerfile
@@ -37,12 +39,18 @@ services:
     ports:
       - "4277:4277"
   
-
   gestion-notes.api:
     image:  gestion-notes.api
     build:
       context: Gestion-Notes.api
       dockerfile: Dockerfile
+
+  mongo:
+    image: mongo:latest
+    container_name: MongoDB
+    restart: always
+    ports:
+      - 27017:27017
 
 volumes:
   mysql-data:
