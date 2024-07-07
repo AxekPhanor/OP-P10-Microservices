@@ -16,6 +16,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PageGestionPatientsComponent } from './pages/page-gestion-patients/page-gestion-patients.component';
 import { PageCreatePatientComponent } from './pages/page-create-patient/page-create-patient.component';
 import { PageUpdatePatientComponent } from './pages/page-update-patient/page-update-patient.component';
+import { PagePatientComponent } from './pages/page-patient/page-patient.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PageUpdatePatientComponent } from './pages/page-update-patient/page-upd
     PageLoginComponent,
     PageGestionPatientsComponent,
     PageCreatePatientComponent,
-    PageUpdatePatientComponent
+    PageUpdatePatientComponent,
+    PagePatientComponent
   ],
   imports: [
     BrowserModule,

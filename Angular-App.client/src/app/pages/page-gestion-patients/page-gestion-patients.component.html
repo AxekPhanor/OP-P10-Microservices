@@ -36,6 +36,11 @@
     <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="details">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <button mat-raised-button (click)="navigateToDetails(element.id)">Dossier</button> </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="update">
     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
     <mat-cell *matCellDef="let element"> <button mat-raised-button (click)="navigateToUpdate(element.id)">Modifier</button> </mat-cell>

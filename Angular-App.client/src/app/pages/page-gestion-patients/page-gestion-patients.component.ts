@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class PageGestionPatientsComponent {
   constructor(private gestionPatientsService: GestionPatientsService, private router: Router) { }
   patients: PatientOutput[] = [];
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth', 'gender', 'address', 'phoneNumber', 'update', 'delete'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth', 'gender', 'address', 'phoneNumber', 'details', 'update', 'delete'];
   patientObservable: Observable<PatientOutput[]> = new Observable<PatientOutput[]>();
   ngOnInit() {
     this.getAll();
@@ -24,7 +24,7 @@ export class PageGestionPatientsComponent {
         this.patients = value as PatientOutput[];
         this.patientObservable = of(this.patients.map(patient => patient));
       }
-    })
+    });
   }
 
    navigateToCreate() {
@@ -33,6 +33,10 @@ export class PageGestionPatientsComponent {
 
   navigateToUpdate(id: number) {
     this.router.navigate(['/patients', 'update', id]);
+  }
+
+  navigateToDetails(id: number) {
+    this.router.navigate(['/patients', id]);
   }
 
   delete(id: number) {
@@ -44,6 +48,6 @@ export class PageGestionPatientsComponent {
       error: err => {
         console.log("delete error " + err);
       }
-    })
+    });
   }
 }
