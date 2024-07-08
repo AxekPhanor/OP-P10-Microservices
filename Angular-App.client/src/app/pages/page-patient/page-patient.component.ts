@@ -70,6 +70,7 @@ export class PagePatientComponent {
       },
       error: err => {
         console.error("error getbyid ", err);
+        this.router.navigate(['/']);
       }
     });
   }

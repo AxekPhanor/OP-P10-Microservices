@@ -22,10 +22,13 @@ export class PageCreatePatientComponent {
   });
 
   onSubmit() {
+    const dateBirth = new Date(this.form.value.controlDateOfBirth!);
+    dateBirth.setMinutes(dateBirth.getMinutes() - dateBirth.getTimezoneOffset());
+
     const patient: PatientInput = {
       firstName: this.form.value.controlFirstName!,
       lastName: this.form.value.controlLastName!,
-      dateOfBirth: this.form.value.controlDateOfBirth!,
+      dateOfBirth: dateBirth.toISOString(),
       gender: this.form.value.controlGender!,
       address: null,
       phoneNumber: null

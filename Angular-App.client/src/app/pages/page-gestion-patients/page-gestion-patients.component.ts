@@ -42,8 +42,8 @@ export class PageGestionPatientsComponent {
   delete(id: number) {
     this.gestionPatientsService.delete(id).subscribe({
       next: value => {
+        this.patients.splice(id-1, 1);
         console.log("patient" + value.id + " delete");
-        this.router.navigate(['/']);
       },
       error: err => {
         console.log("delete error " + err);

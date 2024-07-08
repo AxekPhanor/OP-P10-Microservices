@@ -10,7 +10,10 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Date de naissance</mat-label>
-    <input matInput formControlName="controlDateOfBirth" required autocomplete="off">
+    <input matInput [matDatepicker]="picker" formControlName="controlDateOfBirth" required>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Genre</mat-label>
