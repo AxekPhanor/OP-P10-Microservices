@@ -44,7 +44,7 @@ export class PagePatientComponent {
       next: value => {
         const result = value as Note;
         console.log('note created')
-        this.notes.push(result);
+        this.notes.unshift(result);
       },
       error: (err) => {
         console.error('create patient error', err);

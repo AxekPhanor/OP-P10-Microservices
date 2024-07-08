@@ -23,7 +23,7 @@ namespace Gestion_Notes.api.Services
                 {
                     output.Add(ToOutputModel(note));
                 }
-                return output;
+                return output.OrderByDescending(n => n.Id.CreationTime).ToList();
             }
             catch
             {
