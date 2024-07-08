@@ -8,11 +8,11 @@ import { organizerGuard } from './guards/organizer.guard';
 import { PagePatientComponent } from './pages/page-patient/page-patient.component';
 
 const routes: Routes = [
-  { path: '', component: PageLoginComponent },
-  { path: 'patients', component: PageGestionPatientsComponent, canActivate: [organizerGuard] },
-  { path: 'patients/create', component: PageCreatePatientComponent, canActivate: [organizerGuard] },
-  { path: 'patients/update/:id', component: PageUpdatePatientComponent, canActivate: [organizerGuard] },
-  { path: 'patients/:id', component: PagePatientComponent, canActivate: [organizerGuard] },
+  { path: 'login', component: PageLoginComponent },
+  { path: '', component: PageGestionPatientsComponent, canActivate: [organizerGuard] },
+  { path: 'create', component: PageCreatePatientComponent, canActivate: [organizerGuard] },
+  { path: 'update/:id', component: PageUpdatePatientComponent, canActivate: [organizerGuard] },
+  { path: ':id', component: PagePatientComponent, canActivate: [organizerGuard] },
 ];
 
 @NgModule({

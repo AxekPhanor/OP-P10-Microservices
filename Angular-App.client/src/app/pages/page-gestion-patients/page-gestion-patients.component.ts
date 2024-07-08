@@ -28,22 +28,22 @@ export class PageGestionPatientsComponent {
   }
 
    navigateToCreate() {
-     this.router.navigate(['/patients', 'create']);
+     this.router.navigate(['create']);
   }
 
   navigateToUpdate(id: number) {
-    this.router.navigate(['/patients', 'update', id]);
+    this.router.navigate(['update', id]);
   }
 
   navigateToDetails(id: number) {
-    this.router.navigate(['/patients', id]);
+    this.router.navigate([id]);
   }
 
   delete(id: number) {
     this.gestionPatientsService.delete(id).subscribe({
       next: value => {
         console.log("patient" + value.id + " delete");
-        this.router.navigate(['/', 'patients']);
+        this.router.navigate(['/']);
       },
       error: err => {
         console.log("delete error " + err);

@@ -44,7 +44,7 @@ export class PageUpdatePatientComponent {
     }
     this.gestionPatientsService.update(patient, this.id).subscribe({
       next: (value: PatientOutput) => {
-        this.router.navigate(['/', 'patients']);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.error('create patient error', err);

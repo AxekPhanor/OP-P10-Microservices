@@ -11,7 +11,7 @@ export const organizerGuard: CanActivateFn = (route, state) => {
       return true;
     }),
     catchError((error) => {
-      router.navigate(['/']);
+      router.navigate(['login']);
       return of(false);
     })
   );

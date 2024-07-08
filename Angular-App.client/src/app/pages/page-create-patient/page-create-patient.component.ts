@@ -38,7 +38,7 @@ export class PageCreatePatientComponent {
     }
     this.gestionPatientsService.create(patient).subscribe({
       next: (value: PatientOutput) => {
-        this.router.navigate(['/', 'patients']);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.log(patient);

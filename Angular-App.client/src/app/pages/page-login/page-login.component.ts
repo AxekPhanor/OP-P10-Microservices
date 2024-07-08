@@ -3,7 +3,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { Token } from '../../models/token';
 
 @Component({
   selector: 'app-page-login',
@@ -31,7 +30,7 @@ export class PageLoginComponent {
       this.authService.login(username, password).subscribe({
         next: (token: any) => {
           this.localStorageService.setItem("token", token.value);
-          this.router.navigate(['/', 'patients']);
+          this.router.navigate(['/']);
         },
         error: (err) => {
           console.error('Login error', err);
@@ -43,7 +42,7 @@ export class PageLoginComponent {
   private isConnected() {
     this.authService.isConnected().subscribe({
       next: value => {
-        this.router.navigate(['/', 'patients']);
+        this.router.navigate(['/']);
       }
     })
   }
