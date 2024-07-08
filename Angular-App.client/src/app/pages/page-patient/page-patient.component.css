@@ -1,3 +1,21 @@
 #formatted {
   white-space: pre-wrap;
 }
+
+#formNote {
+  display: flex;
+  flex-direction: column;
+}
+
+#buttonCreateNote {
+  width: 25%;
+}
+
+mat-card {
+  margin-top: 5px;
+  background-color: lightgray;
+}
+
+#pagePatient {
+  padding-bottom: 20px;
+}

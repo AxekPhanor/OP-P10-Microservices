@@ -1,29 +1,31 @@
-<h1>Information patient</h1>
-<p>Prénom : {{ patient.firstName }}</p>
-<p>Nom de famille : {{ patient.lastName }}</p>
-<p>Date de naissance : {{ patient.dateOfBirth | date:'dd/MM/yyyy' }}</p>
-<p>Genre : {{ patient.gender }}</p>
-<p>Adresse : {{ patient.address }}</p>
-<p>Numéro de téléphone : {{ patient.phoneNumber }}</p>
-<hr>
-<h1>Ajouter une note</h1>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <textarea matInput formControlName="controlContent" required autocomplete="off"></textarea>
-  </mat-form-field>
-  <button mat-stroked-button type="submit" [disabled]="!form.valid">Ajouter</button>
-</form>
-<hr>
-<h1>Historique des notes</h1>
-@for (note of notes; track note.id) {
-<mat-card>
-</mat-card>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>{{ note.id?.creationTime | date:'dd/MM/yyyy HH:mm' }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p id="formatted">{{ note.content }}</p>
-  </mat-card-content>
-</mat-card>
-}
+<div id="pagePatient">
+  <h1>Information patient</h1>
+  <p>Prénom : {{ patient.firstName }}</p>
+  <p>Nom de famille : {{ patient.lastName }}</p>
+  <p>Date de naissance : {{ patient.dateOfBirth | date:'dd/MM/yyyy' }}</p>
+  <p>Genre : {{ patient.gender }}</p>
+  <p>Adresse : {{ patient.address }}</p>
+  <p>Numéro de téléphone : {{ patient.phoneNumber }}</p>
+  <hr>
+  <h1>Ajouter une note</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" id="formNote">
+    <mat-form-field>
+      <textarea matInput formControlName="controlContent" required autocomplete="off" rows="5"></textarea>
+    </mat-form-field>
+    <button mat-stroked-button type="submit" [disabled]="!form.valid" id="buttonCreateNote">Ajouter</button>
+  </form>
+  <hr>
+  <h1>Historique des notes</h1>
+  @for (note of notes; track note.id) {
+  <mat-card>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ note.id?.creationTime | date:'dd/MM/yyyy HH:mm' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p id="formatted">{{ note.content }}</p>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
