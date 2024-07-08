@@ -8,7 +8,6 @@ namespace Gestion_Patients.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("Bearer")]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService patientService;
@@ -19,6 +18,7 @@ namespace Gestion_Patients.api.Controllers
 
         [HttpPost]
         [Route("Create")]
+        [Authorize("organizer")]
         public async Task<IActionResult> Create([FromBody] PatientIntputModel input)
         {
             try
@@ -34,6 +34,7 @@ namespace Gestion_Patients.api.Controllers
 
         [HttpDelete]
         [Route("Delete")]
+        [Authorize("organizer")]
         public async Task<IActionResult> Delete([FromQuery] int id)
         {
             try
@@ -54,6 +55,7 @@ namespace Gestion_Patients.api.Controllers
 
         [HttpGet]
         [Route("Get")]
+        [Authorize("organizerOrPractitioner")]
         public async Task<IActionResult> Get([FromQuery] int id)
         {
             try
@@ -74,6 +76,7 @@ namespace Gestion_Patients.api.Controllers
 
         [HttpPut]
         [Route("Update")]
+        [Authorize("organizer")]
         public async Task<IActionResult> Update([FromQuery] int id, [FromBody] PatientIntputModel input)
         {
             try
@@ -94,6 +97,7 @@ namespace Gestion_Patients.api.Controllers
 
         [HttpGet]
         [Route("GetAll")]
+        [Authorize("organizerOrPractitioner")]
         public async Task<IActionResult> GetAll()
         {
             try

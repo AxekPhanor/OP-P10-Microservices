@@ -3,6 +3,5 @@
     public interface IAuthenticationService
     {
         Task<string> Login(string username, string password);
-        Task<bool> EnsureAdminCreated();
     }
 }

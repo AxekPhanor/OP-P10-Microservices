@@ -37,9 +37,17 @@ namespace Gestion_Patients.api.Controllers
         }
 
         [HttpGet]
-        [Route("IsConnected")]
-        [Authorize("Bearer")]
-        public IActionResult IsConnected()
+        [Route("IsOrganizer")]
+        [Authorize("organizer")]
+        public IActionResult IsOrganizer()
+        {
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("IsPractitioner")]
+        [Authorize("practitioner")]
+        public IActionResult IsPractitioner()
         {
             return Ok();
         }

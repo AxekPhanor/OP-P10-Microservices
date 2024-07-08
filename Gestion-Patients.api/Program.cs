@@ -38,15 +38,26 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Bearer", policy =>
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("organizer", policy =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireRole("organizer");
         policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+    })
+    .AddPolicy("practitioner", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireRole("practitioner");
+        policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+    })
+    .AddPolicy("organizerOrPractitioner", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireAssertion(context =>
+            context.User.IsInRole("organizer") || context.User.IsInRole("practitioner"));
+        policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
     });
-});
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -72,10 +83,18 @@ using (var scope = app.Services.CreateScope())
 {
     var dbcontext = scope.ServiceProvider.GetRequiredService<PatientContext>();
     var authService = scope.ServiceProvider.GetService<IAuthenticationService>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    dbcontext.Database.EnsureCreated();
-    var result = await authService!.EnsureAdminCreated();
-    Console.WriteLine(result);
+    var succeed = dbcontext.Database.EnsureCreated();
+    if (succeed)
+    {
+        var seeder = new DatabaseSeeder(userManager, roleManager);
+        await seeder.EnsureOrganizerIsCreated();
+        await seeder.EnsurePractitionerIsCreated();
+        await seeder.EnsureAdminIsCreated();
+    }
+    
 }
 
 app.UseHttpsRedirection();
