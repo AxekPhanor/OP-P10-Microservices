@@ -37,15 +37,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Bearer", policy =>
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("practitioner", policy =>
     {
         policy.RequireAuthenticatedUser();
-        policy.RequireRole("organizer");
+        policy.RequireRole("practitioner");
         policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
     });
-});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

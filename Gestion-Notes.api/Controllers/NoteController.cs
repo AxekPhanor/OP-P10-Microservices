@@ -7,7 +7,7 @@ namespace Gestion_Notes.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("Bearer")]
+    [Authorize("practitioner")]
     public class NoteController : ControllerBase
     {
         private readonly INoteService noteService;
