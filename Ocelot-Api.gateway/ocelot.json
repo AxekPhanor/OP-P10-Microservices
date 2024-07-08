@@ -14,9 +14,22 @@
       "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
-      "UpstreamPathTemplate": "/gateway/isconnected",
+      "UpstreamPathTemplate": "/gateway/isorganizer",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/IsConnected",
+      "DownstreamPathTemplate": "/api/Authentication/IsOrganizer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gestion-patients.api",
+          "Port": 8081
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/ispractitioner",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Authentication/IsPractitioner",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
