@@ -21,6 +21,7 @@ export class PageLoginComponent {
   }
 
   ngOnInit() {
+    this.isConnected();
   }
 
   onSubmit() {
@@ -37,5 +38,13 @@ export class PageLoginComponent {
         }
       });
     }
+  }
+
+  private isConnected() {
+    this.authService.isConnected().subscribe({
+      next: value => {
+        this.router.navigate(['/', 'patients']);
+      }
+    })
   }
 }

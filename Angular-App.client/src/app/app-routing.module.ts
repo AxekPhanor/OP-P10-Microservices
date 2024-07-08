@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'patients', component: PageGestionPatientsComponent, canActivate: [organizerGuard] },
   { path: 'patients/create', component: PageCreatePatientComponent, canActivate: [organizerGuard] },
   { path: 'patients/update/:id', component: PageUpdatePatientComponent, canActivate: [organizerGuard] },
-  { path: 'patients/:id', component: PagePatientComponent, canActivate: [organizerGuard] }
+  { path: 'patients/:id', component: PagePatientComponent, canActivate: [organizerGuard] },
 ];
 
 @NgModule({

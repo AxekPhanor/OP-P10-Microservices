@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,7 @@ import { PagePatientComponent } from './pages/page-patient/page-patient.componen
     PageGestionPatientsComponent,
     PageCreatePatientComponent,
     PageUpdatePatientComponent,
-    PagePatientComponent
+    PagePatientComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { PagePatientComponent } from './pages/page-patient/page-patient.componen
     ReactiveFormsModule,
     MatIconModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()
