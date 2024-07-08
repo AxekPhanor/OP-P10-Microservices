@@ -1,11 +1,6 @@
 <h1>Espace organisateur</h1>
 <button mat-raised-button (click)="navigateToCreate()">Créer un patient</button>
 <mat-table [dataSource]="patients">
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-  </ng-container>
-
   <ng-container matColumnDef="firstName">
     <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
