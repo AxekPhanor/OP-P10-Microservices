@@ -25,7 +25,15 @@ namespace Gestion_Patients.api.Services
                     return "";
                 }
                 var result = await userManager.CheckPasswordAsync(user, password);
-                var claims = await userManager.GetClaimsAsync(user);
+                var roles = await userManager.GetRolesAsync(user);
+                var claims = new List<Claim>
+                {
+                    new(ClaimTypes.Name, user.UserName!)
+                };
+                foreach (var role in roles)
+                {
+                    claims.Add(new(ClaimTypes.Role, role));
+                }
                 if (result)
                 {
                     var tokenHandler = new JwtSecurityTokenHandler();
