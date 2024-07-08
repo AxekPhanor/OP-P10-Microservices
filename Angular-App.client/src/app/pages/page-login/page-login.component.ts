@@ -20,7 +20,13 @@ export class PageLoginComponent {
   }
 
   ngOnInit() {
-    this.isConnected();
+    console.log(this.authService.isAuthenticated());
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['login']);
+    }
+    else {
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit() {
@@ -37,13 +43,5 @@ export class PageLoginComponent {
         }
       });
     }
-  }
-
-  private isConnected() {
-    this.authService.isConnected().subscribe({
-      next: value => {
-        this.router.navigate(['/']);
-      }
-    })
   }
 }

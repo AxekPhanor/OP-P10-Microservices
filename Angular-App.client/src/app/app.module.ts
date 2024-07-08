@@ -12,7 +12,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
@@ -21,6 +20,11 @@ import { PageGestionPatientsComponent } from './pages/page-gestion-patients/page
 import { PageCreatePatientComponent } from './pages/page-create-patient/page-create-patient.component';
 import { PageUpdatePatientComponent } from './pages/page-update-patient/page-update-patient.component';
 import { PagePatientComponent } from './pages/page-patient/page-patient.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -43,11 +47,16 @@ import { PagePatientComponent } from './pages/page-patient/page-patient.componen
     HttpClientModule,
     MatTableModule,
     MatCardModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
   ],
   providers: [
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 import { AuthenticationService } from '../services/authentication.service';
-import { jwtDecode } from "jwt-decode";
 
-export const organizerGuard: CanActivateFn = (route, state) => {
+export const organizerOrPractitionerGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthenticationService);
   const router = inject(Router);
   const token = localStorage.getItem('token');
@@ -19,7 +19,7 @@ export const organizerGuard: CanActivateFn = (route, state) => {
   }
 
   const payload = tokenPayload as any;
-  if (payload.role != 'organizer') {
+  if (payload.role != 'organizer' && payload.role != 'practitioner') {
     return false;
   }
 
