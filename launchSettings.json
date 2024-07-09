@@ -10,7 +10,8 @@
         "angular-app.client": "StartWithoutDebugging",
         "sqlserver": "StartWithoutDebugging",
         "ocelot": "StartDebugging",
-        "gestion-notes.api": "StartDebugging"
+        "gestion-notes.api": "StartDebugging",
+        "rapport-diabete.api": "StartDebugging"
       }
     }
   }

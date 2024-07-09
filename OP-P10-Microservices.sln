@@ -11,7 +11,9 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Angular-App.client", "Angular-App.client\Angular-App.client.esproj", "{56F5B114-012F-4830-933E-E1D79DFBEC38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestion-Notes.api", "Gestion-Notes.api\Gestion-Notes.api.csproj", "{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gestion-Notes.api", "Gestion-Notes.api\Gestion-Notes.api.csproj", "{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapport-Diabete.api", "Rapport-Diabete.api\Rapport-Diabete.api.csproj", "{402CEEDF-4056-4BEA-81C1-F45A62C59077}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3699CD9F-C3A8-45F1-8FB5-57094D8046AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402CEEDF-4056-4BEA-81C1-F45A62C59077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402CEEDF-4056-4BEA-81C1-F45A62C59077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402CEEDF-4056-4BEA-81C1-F45A62C59077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402CEEDF-4056-4BEA-81C1-F45A62C59077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

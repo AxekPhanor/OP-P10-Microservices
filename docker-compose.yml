@@ -52,5 +52,12 @@ services:
     ports:
       - 27017:27017
 
+  rapport-diabete.api:
+    image: rapport-diabete.api
+    build:
+      context: Rapport-Diabete.api
+      dockerfile: Dockerfile
+
 volumes:
   mysql-data:
+
