@@ -14,45 +14,6 @@
       "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
-      "UpstreamPathTemplate": "/gateway/isorganizer",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/IsOrganizer",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "gestion-patients.api",
-          "Port": 8081
-        }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/ispractitioner",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/IsPractitioner",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "gestion-patients.api",
-          "Port": 8081
-        }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/logout",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Authentication/Logout",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "gestion-patients.api",
-          "Port": 8081
-        }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
-    },
-    {
       "UpstreamPathTemplate": "/gateway/patients",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Patient/GetAll",

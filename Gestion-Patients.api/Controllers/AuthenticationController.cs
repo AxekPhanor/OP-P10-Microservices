@@ -1,6 +1,5 @@
 ﻿using Gestion_Patients.api.Models;
 using Gestion_Patients.api.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -34,22 +33,6 @@ namespace Gestion_Patients.api.Controllers
                 Log.Error($"{ex.StackTrace} : {ex.Message}");
             }
             return NotFound();
-        }
-
-        [HttpGet]
-        [Route("IsOrganizer")]
-        [Authorize("organizer")]
-        public IActionResult IsOrganizer()
-        {
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("IsPractitioner")]
-        [Authorize("practitioner")]
-        public IActionResult IsPractitioner()
-        {
-            return Ok();
         }
     }
 }
