@@ -19,14 +19,16 @@ services:
   ocelot:
     environment:
       - ASPNETCORE_ENVIRONMENT=Developement
+      - ASPNETCORE_HTTP_PORTS=5050
       - ClientAppUrl=http://localhost:4277
       - GestionPatientsApiUrl=https://localhost:8081
       - GestionNotesApiUrl=https://localhost:4041
+      - RapportDiabeteApiUrl=http://localhost:3030
     build:
       context: Ocelot-Api.gateway
       dockerfile: Dockerfile
     ports:
-      - "5000:8080"
+      - "5000:5050"
     depends_on:
       - gestion-patients.api
   

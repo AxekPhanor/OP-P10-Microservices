@@ -12,6 +12,7 @@ builder.Services.AddCors(options =>
     var clientAppUrl = builder.Configuration.GetValue<string>("ClientAppUrl");
     var GestionPatientsApiUrl = builder.Configuration.GetValue<string>("GestionPatientsApiUrl");
     var GestionNotesApiUrl = builder.Configuration.GetValue<string>("GestionNotesApiUrl");
+    var RapportDiabeteApiUrl = builder.Configuration.GetValue<string>("RapportDiabeteApiUrl");
     options.AddPolicy("CorsPolicy",
         policy =>
         {
@@ -26,6 +27,10 @@ builder.Services.AddCors(options =>
             if (!string.IsNullOrEmpty(GestionNotesApiUrl))
             {
                 policy.WithOrigins(GestionNotesApiUrl);
+            }
+            if (!string.IsNullOrEmpty(RapportDiabeteApiUrl))
+            {
+                policy.WithOrigins(RapportDiabeteApiUrl);
             }
             policy.AllowAnyMethod();
             policy.AllowAnyHeader();
