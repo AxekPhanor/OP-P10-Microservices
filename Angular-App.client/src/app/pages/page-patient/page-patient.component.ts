@@ -5,6 +5,7 @@ import { PatientOutput } from '../../models/patientOutput';
 import { Note } from '../../models/note';
 import { GestionNotesService } from '../../services/gestion-notes.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DiabeteRiskService } from '../../services/diabete-risk.service';
 
 @Component({
   selector: 'app-page-patient',
@@ -15,6 +16,7 @@ export class PagePatientComponent {
   constructor(
     private gestionPatientsService: GestionPatientsService,
     private gestionNoteService: GestionNotesService,
+    private diabeteRiskService: DiabeteRiskService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -33,6 +35,8 @@ export class PagePatientComponent {
   form = new FormGroup({
     controlContent: new FormControl('')
   });
+
+  risk: string = "";
 
   onSubmit() {
     const note: Note = {
@@ -55,6 +59,7 @@ export class PagePatientComponent {
   ngOnInit() {
     this.getById();
     this.listNotes();
+    this.getRisk(Number(this.route.snapshot.paramMap.get('id')));
   }
 
   private getById() {
@@ -82,6 +87,31 @@ export class PagePatientComponent {
       },
       error: err => {
         console.error("error list notes ", err);
+      }
+    });
+  }
+
+  private getRisk(id: number) {
+    this.diabeteRiskService.get(id).subscribe({
+      next: value => {
+        switch (value) {
+          case 0: {
+            this.risk = "aucun risque";
+            break;
+          }
+          case 1: {
+            this.risk = "risque limité";
+            break;
+          }
+          case 2: {
+            this.risk = "danger";
+            break;
+          }
+          case 3: {
+            this.risk = "apparition précoce";
+            break;
+          }
+        }
       }
     });
   }

@@ -6,6 +6,7 @@
   <p>Genre : {{ patient.gender }}</p>
   <p>Adresse : {{ patient.address }}</p>
   <p>Numéro de téléphone : {{ patient.phoneNumber }}</p>
+  <b>Risque de diabète : {{ risk }}</b>
   <hr>
   <h1>Ajouter une note</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" id="formNote">
