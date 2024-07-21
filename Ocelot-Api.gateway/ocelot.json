@@ -4,118 +4,109 @@
       "UpstreamPathTemplate": "/gateway/login",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Authentication/Login",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/patients",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Patient/GetAll",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/patient/get?id={id}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Patient/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/patient/create",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Patient/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/patient/delete?id={id}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/Patient/Delete?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/patient/update?id={id}",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/Patient/Update?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-patients.api",
-          "Port": 8081
+          "Port": 8080
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/note/create",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Note/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-notes.api",
-          "Port": 4041
+          "Port": 4040
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/notes?patientId={patientId}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Note/GetNotes?patientId={patientId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "gestion-notes.api",
-          "Port": 4041
+          "Port": 4040
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     },
     {
       "UpstreamPathTemplate": "/gateway/diabeterisk/get?id={id}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/DiabeteRisk/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "rapport-diabete.api",
-          "Port": 3031
+          "Port": 3030
         }
-      ],
-      "DangerousAcceptAnyServerCertificateValidator": true
+      ]
     }
   ],
   "GlobalConfiguration": {
