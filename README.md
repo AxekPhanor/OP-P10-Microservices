@@ -67,18 +67,25 @@ Vous devrez normalement voir apparaitre une page de connexion (si ce n'est pas l
 Lors de la création de nos conteneurs, 3 comptes ont été créés, chacun ayant différents accès ou restrictions sur l'application.
 
 **Le compte organisateur:**
+
 nom de compte : organizer
+
 mot de passe : 6yb64nOav4M?JmHzn
+
 Il possède le rôle organizer.
 
 **Le compte praticien :**
+
 nom de compte : practitioner
 mot de passe : 6yb64nOav4M?JmHzn
 Il possède le rôle practitioner.
 
 **Le compte administrateur :**
+
 nom de compte : admin
+
 mot de passe : 6yb64nOav4M?JmHzn
+
 Il possède les rôles organizer et practitioner.
 
 Le rôle **organizer** vous permet de créer des patients, de modifier leurs informations personnelles, ou de les supprimer. Quant au rôle **practitioner**, vous pourrez accéder au dossier d'un patient, comprenant l'historique des notes, le risque de diabète du patient et vous aurez également la possibilité de créer des notes.
