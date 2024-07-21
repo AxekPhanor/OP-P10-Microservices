@@ -2,8 +2,8 @@ services:
   gestion-patients.api:
     image: gestion-patients.api
     build:
-      context: Gestion-Patients.api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Gestion-Patients.api/Dockerfile
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -25,8 +25,8 @@ services:
       - GestionNotesApiUrl=https://localhost:4041
       - RapportDiabeteApiUrl=http://localhost:3030
     build:
-      context: Ocelot-Api.gateway
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Ocelot-Api.gateway/Dockerfile
     ports:
       - "5000:5050"
     depends_on:
@@ -44,8 +44,8 @@ services:
   gestion-notes.api:
     image:  gestion-notes.api
     build:
-      context: Gestion-Notes.api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Gestion-Notes.api/Dockerfile
 
   mongo:
     image: mongo:latest
@@ -57,8 +57,8 @@ services:
   rapport-diabete.api:
     image: rapport-diabete.api
     build:
-      context: Rapport-Diabete.api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Rapport-Diabete.api/Dockerfile
 
 volumes:
   mysql-data:
