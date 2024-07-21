@@ -1,6 +1,7 @@
 services:
   gestion-patients.api:
     image: gestion-patients.api
+    container_name: Gestion-Patients.api
     build:
       context: .
       dockerfile: Gestion-Patients.api/Dockerfile
@@ -17,6 +18,8 @@ services:
       - mysql-data:/var/lib/mysql
 
   ocelot:
+    image: ocelot.gateway
+    container_name: Ocelot.gateway
     environment:
       - ASPNETCORE_ENVIRONMENT=Developement
       - ASPNETCORE_HTTP_PORTS=5050
@@ -43,6 +46,7 @@ services:
   
   gestion-notes.api:
     image:  gestion-notes.api
+    container_name: Gestion-Notes.api
     build:
       context: .
       dockerfile: Gestion-Notes.api/Dockerfile
@@ -56,6 +60,7 @@ services:
 
   rapport-diabete.api:
     image: rapport-diabete.api
+    container_name: Rapport-Diabete.api
     build:
       context: .
       dockerfile: Rapport-Diabete.api/Dockerfile
