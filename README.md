@@ -51,7 +51,7 @@ Avant toute chose, vérifier que Docker est lancé sur votre ordinateur.
 
 1. Cloner le projet 
 	```
-	git clone https://github.com/AxekPhanor/OP-P10-Microservices.git
+	git clone --single-branch --branch dev https://github.com/AxekPhanor/OP-P10-Microservices.git
 	```
 2. Dans le répertoire du projet utiliser cette commande pour créer nos images et lancer nos conteneurs docker. 
 	```
