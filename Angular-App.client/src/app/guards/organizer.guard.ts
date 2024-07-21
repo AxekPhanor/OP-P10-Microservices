@@ -19,7 +19,7 @@ export const organizerGuard: CanActivateFn = (route, state) => {
   }
 
   const payload = tokenPayload as any;
-  if (payload.role != 'organizer') {
+  if (!payload.role.includes('organizer')) {
     return false;
   }
 

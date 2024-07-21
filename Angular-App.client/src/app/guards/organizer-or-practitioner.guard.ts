@@ -19,9 +19,8 @@ export const organizerOrPractitionerGuard: CanActivateFn = (route, state) => {
   }
 
   const payload = tokenPayload as any;
-  if (payload.role != 'organizer' && payload.role != 'practitioner') {
+  if (!payload.role.includes('organizer') && payload.role.includes('practitioner')) {
     return false;
   }
-
   return true;
 };
