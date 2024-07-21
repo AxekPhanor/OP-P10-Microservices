@@ -7,12 +7,12 @@ namespace Gestion_Patients.api.Repositories
     public class PatientRepository : IPatientRepository
     {
         private readonly PatientContext dbContext;
-        public PatientRepository(PatientContext dbContext) 
-        { 
+        public PatientRepository(PatientContext dbContext)
+        {
             this.dbContext = dbContext;
         }
 
-        public async Task<List<Patient>> List() 
+        public async Task<List<Patient>> List()
         {
             return await dbContext.Patients
             .Include(p => p.Address)
@@ -99,6 +99,6 @@ namespace Gestion_Patients.api.Repositories
             }
         }
 
-        
+
     }
 }

@@ -1,8 +1,5 @@
-﻿using Azure;
-using Rapport_Diabete.api.Models;
+﻿using Rapport_Diabete.api.Models;
 using Serilog;
-using System.IO;
-using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace Rapport_Diabete.api.Services
@@ -17,7 +14,7 @@ namespace Rapport_Diabete.api.Services
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             this.httpClient = httpClient;
-            
+
         }
 
         public async Task<PatientModel?> Get(int id, string token)

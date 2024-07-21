@@ -10,7 +10,7 @@ namespace Gestion_Patients.api.Services
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly IConfiguration config;
-        public AuthenticationService(UserManager<IdentityUser> userManager, IConfiguration config) 
+        public AuthenticationService(UserManager<IdentityUser> userManager, IConfiguration config)
         {
             this.userManager = userManager;
             this.config = config;

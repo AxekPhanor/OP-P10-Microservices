@@ -1,6 +1,6 @@
-﻿using Gestion_Patients.api.Models;
+﻿using Gestion_Patients.api.Data.Entities;
+using Gestion_Patients.api.Models;
 using Gestion_Patients.api.Repositories;
-using Gestion_Patients.api.Data.Entities;
 
 namespace Gestion_Patients.api.Services
 {
@@ -68,7 +68,7 @@ namespace Gestion_Patients.api.Services
             try
             {
                 var patient = await patientRepository.Read(id);
-                if(patient is not null)
+                if (patient is not null)
                 {
                     return ToOutputModel(patient);
                 }
@@ -85,7 +85,7 @@ namespace Gestion_Patients.api.Services
             try
             {
                 var patientUpdated = await patientRepository.Update(await ToEntity(patientModel, id));
-                if(patientUpdated is not null)
+                if (patientUpdated is not null)
                 {
                     return ToOutputModel(patientUpdated);
                 }
@@ -132,8 +132,8 @@ namespace Gestion_Patients.api.Services
                 DateOfBirth = patient.DateOfBirth,
                 Gender = patient.Gender,
             };
-            if (patient.Address is not null) 
-            { 
+            if (patient.Address is not null)
+            {
                 output.Address = patient.Address.Name;
             }
             if (patient.PhoneNumber is not null)

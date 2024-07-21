@@ -10,9 +10,9 @@ namespace Gestion_Patients.api.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService authenticationService;
-        
-        public AuthenticationController(IAuthenticationService authenticationService) 
-        { 
+
+        public AuthenticationController(IAuthenticationService authenticationService)
+        {
             this.authenticationService = authenticationService;
         }
 

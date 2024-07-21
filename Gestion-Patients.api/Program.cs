@@ -94,7 +94,7 @@ using (var scope = app.Services.CreateScope())
         await seeder.EnsurePractitionerIsCreated();
         await seeder.EnsureAdminIsCreated();
     }
-    
+
 }
 
 app.UseHttpsRedirection();

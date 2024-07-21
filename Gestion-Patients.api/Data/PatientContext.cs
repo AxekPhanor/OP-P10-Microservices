@@ -11,7 +11,7 @@ namespace Gestion_Patients.api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.Entity<Address>()
                 .HasMany(g => g.Patients)
                 .WithOne(g => g.Address);

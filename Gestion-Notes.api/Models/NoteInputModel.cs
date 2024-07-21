@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson;
-
-namespace Gestion_Notes.api.Models
+﻿namespace Gestion_Notes.api.Models
 {
     public class NoteInputModel
     {

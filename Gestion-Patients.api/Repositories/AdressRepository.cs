@@ -7,8 +7,8 @@ namespace Gestion_Patients.api.Repositories
     public class AddressRepository : IAddressRepository
     {
         private readonly PatientContext dbContext;
-        public AddressRepository(PatientContext dbContext) 
-        { 
+        public AddressRepository(PatientContext dbContext)
+        {
             this.dbContext = dbContext;
         }
 

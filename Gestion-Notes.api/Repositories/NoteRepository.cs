@@ -8,7 +8,7 @@ namespace Gestion_Notes.api.Repositories
     public class NoteRepository : INoteRepository
     {
         private readonly MongoDbContext dbContext;
-        public NoteRepository(MongoDbContext dbContext) 
+        public NoteRepository(MongoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

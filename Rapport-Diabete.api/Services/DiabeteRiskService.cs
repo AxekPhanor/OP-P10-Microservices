@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Rapport_Diabete.api.Models;
+﻿using Rapport_Diabete.api.Models;
 
 namespace Rapport_Diabete.api.Services
 {

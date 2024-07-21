@@ -11,8 +11,8 @@ namespace Gestion_Notes.api.Controllers
     public class NoteController : ControllerBase
     {
         private readonly INoteService noteService;
-        public NoteController(INoteService noteService) 
-        { 
+        public NoteController(INoteService noteService)
+        {
             this.noteService = noteService;
         }
         [HttpPost]
