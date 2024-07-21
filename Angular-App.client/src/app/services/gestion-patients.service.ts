@@ -3,16 +3,11 @@ import { BaseService } from './base.service';
 import { PatientInput } from '../models/patientInput';
 import { PatientOutput } from '../models/patientOutput';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from './local-storage.service';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GestionPatientsService extends BaseService {
-  constructor(http: HttpClient, private localStorage: LocalStorageService) {
-    super(http);
-  }
 
   getAll(): Observable<Array<PatientOutput>> {
     return this.http.get<Array<PatientOutput>>(`${this.url}/patients`, {
