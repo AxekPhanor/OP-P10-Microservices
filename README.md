@@ -17,7 +17,8 @@ Ce projet comporte 7 microservices :
  - Un application client angular
 
 Ci-dessous vous pouvez retrouver un diagramme représentant l'architecture de l'application :
-```mermaid 
+```mermaid
+	graph TD;
 	Ocelot[[Ocelot Gateway]]  -->  Gestion-Patients[Gestion-Patients API]
 	Ocelot  -->  Rapport-Diabete[Rapport-Diabete API]
 	Ocelot  -->  Gestion-Notes[Gestion-Notes API]
