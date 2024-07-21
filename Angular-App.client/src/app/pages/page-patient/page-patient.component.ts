@@ -47,7 +47,6 @@ export class PagePatientComponent {
     this.gestionNoteService.create(note).subscribe({
       next: value => {
         const result = value as Note;
-        console.log('note created')
         this.notes.unshift(result);
       },
       error: (err) => {

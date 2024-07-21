@@ -26,7 +26,6 @@ export class PageLoginComponent {
     }
     else {
       this.router.navigate(['/']);
-      console.log("redirect");
     }
   }
 

@@ -49,7 +49,6 @@ export class PageGestionPatientsComponent {
       next: value => {
         this.patients.splice(id - 1, 1);
         this.patients = [...this.patients];
-        console.log("patient" + value.id + " delete");
       },
       error: err => {
         console.log("delete error " + err);

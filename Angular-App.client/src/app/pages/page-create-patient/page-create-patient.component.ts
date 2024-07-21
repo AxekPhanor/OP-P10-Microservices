@@ -44,7 +44,6 @@ export class PageCreatePatientComponent {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        console.log(patient);
         console.error('create patient error', err);
       }
     })
