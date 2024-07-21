@@ -14,8 +14,7 @@ const routes: Routes = [
   { path: '', component: PageGestionPatientsComponent, canActivate: [organizerOrPractitionerGuard] },
   { path: 'create', component: PageCreatePatientComponent, canActivate: [organizerGuard] },
   { path: 'update/:id', component: PageUpdatePatientComponent, canActivate: [organizerGuard] },
-  { path: ':id', component: PagePatientComponent, canActivate: [practitionerGuard] },
-  { path: '**', redirectTo: '' }
+  { path: ':id', component: PagePatientComponent, canActivate: [practitionerGuard] }
 ];
 
 @NgModule({

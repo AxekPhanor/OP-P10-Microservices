@@ -5,13 +5,14 @@ import { Token } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { jwtDecode } from 'jwt-decode';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService extends BaseService {
-  constructor(http: HttpClient, private localStorage: LocalStorageService, public jwtHelper: JwtHelperService) {
+  constructor(http: HttpClient, localStorage: LocalStorageService, public jwtHelper: JwtHelperService) {
     super(http);
   }
   login(username: string, password: string): Observable<Token> {
@@ -24,25 +25,46 @@ export class AuthenticationService extends BaseService {
     });
   }
 
-  isOrganizer(): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/isorganizer`, {
-      headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
-      withCredentials: true
-    });
-  }
-
-  isPractitioner(): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/ispractitioner`, {
-      headers: { 'Authorization': 'Bearer ' + this.localStorage.getItem('token') },
-      withCredentials: true
-    });
-  }
-
-  public isAuthenticated(): boolean {
+  isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     if (token == null) {
       return false;
     }
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+
+  isPractitioner(): boolean {
+    const token = localStorage.getItem('token');
+
+    if (token == null) {
+      return false;
+    }
+
+    const tokenPayload = jwtDecode(token);
+    const payload = tokenPayload as any;
+
+    if (!payload.role.includes('practitioner')) {
+      return false;
+    }
+
+    return true;
+  }
+
+  isOrganizer(): boolean {
+    const token = localStorage.getItem('token');
+
+    if (token == null) {
+      return false;
+    }
+
+    const tokenPayload = jwtDecode(token);
+    const payload = tokenPayload as any;
+
+    if (!payload.role.includes('organizer')) {
+      return false;
+    }
+
+    return true;
   }
 }

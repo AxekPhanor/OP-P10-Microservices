@@ -9,6 +9,7 @@ export const organizerOrPractitionerGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('token');
 
   if (token == null) {
+    router.navigate(['login']);
     return false;
   }
 
@@ -17,9 +18,9 @@ export const organizerOrPractitionerGuard: CanActivateFn = (route, state) => {
     router.navigate(['login']);
     return false;
   }
-
   const payload = tokenPayload as any;
-  if (!payload.role.includes('organizer') && payload.role.includes('practitioner')) {
+  const roles = Array.isArray(payload.role) ? payload.role : [payload.role];
+  if (!roles.includes('organizer') && !roles.includes('practitioner')) {
     return false;
   }
   return true;

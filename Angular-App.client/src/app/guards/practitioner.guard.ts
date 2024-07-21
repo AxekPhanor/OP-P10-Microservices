@@ -19,7 +19,8 @@ export const practitionerGuard: CanActivateFn = (route, state) => {
   }
 
   const payload = tokenPayload as any;
-  if (!payload.role.includes('practitioner')) {
+  const roles = Array.isArray(payload.role) ? payload.role : [payload.role];
+  if (!roles.includes('practitioner')) {
     return false;
   }
 

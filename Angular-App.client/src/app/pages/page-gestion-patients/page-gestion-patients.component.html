@@ -1,5 +1,11 @@
 <h1>Espace organisateur</h1>
-<button mat-raised-button (click)="navigateToCreate()">Créer un patient</button>
+@if(isOrganizer()) {
+  <button mat-raised-button (click)="navigateToCreate()">Créer un patient</button>
+}
+@else {
+  <button mat-raised-button (click)="navigateToCreate()" disabled>Créer un patient</button>
+}
+
 <mat-table [dataSource]="patients">
   <ng-container matColumnDef="firstName">
     <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
@@ -33,17 +39,38 @@
 
   <ng-container matColumnDef="details">
     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-    <mat-cell *matCellDef="let element"> <button mat-raised-button (click)="navigateToDetails(element.id)">Dossier</button> </mat-cell>
+    <mat-cell *matCellDef="let element">
+      @if(isPractitioner()) {
+        <button mat-raised-button (click)="navigateToDetails(element.id)">Dossier</button>
+      }
+      @else {
+        <button mat-raised-button (click)="navigateToDetails(element.id)" disabled>Dossier</button>
+      }
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="update">
     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-    <mat-cell *matCellDef="let element"> <button mat-raised-button (click)="navigateToUpdate(element.id)">Modifier</button> </mat-cell>
+    <mat-cell *matCellDef="let element">
+      @if(isOrganizer()) {
+        <button mat-raised-button (click)="navigateToUpdate(element.id)">Modifier</button>
+      }
+      @else {
+        <button mat-raised-button (click)="navigateToUpdate(element.id)" disabled>Modifier</button>
+      }
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="delete">
     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-    <mat-cell *matCellDef="let element"> <button mat-raised-button (click)="delete(element.id)">Supprimer</button> </mat-cell>
+    <mat-cell *matCellDef="let element">
+      @if(isOrganizer()) {
+        <button mat-raised-button (click)="delete(element.id)">Supprimer</button>
+      }
+      @else {
+        <button mat-raised-button (click)="delete(element.id)" disabled>Supprimer</button>
+      }
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -3,6 +3,7 @@ import { GestionPatientsService } from '../../services/gestion-patients.service'
 import { PatientOutput } from '../../models/patientOutput';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-page-gestion-patients',
@@ -12,6 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class PageGestionPatientsComponent {
   constructor(
     private gestionPatientsService: GestionPatientsService,
+    private authenticationService: AuthenticationService,
     private router: Router) { }
 
   patients: PatientOutput[] = [];
@@ -30,7 +32,7 @@ export class PageGestionPatientsComponent {
     });
   }
 
-   navigateToCreate() {
+  navigateToCreate() {
      this.router.navigate(['create']);
   }
 
@@ -53,5 +55,13 @@ export class PageGestionPatientsComponent {
         console.log("delete error " + err);
       }
     });
+  }
+
+  isOrganizer() {
+    return this.authenticationService.isOrganizer();
+  }
+
+  isPractitioner() {
+    return this.authenticationService.isPractitioner();
   }
 }
