@@ -2,6 +2,7 @@
 using Gestion_Notes.api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace Gestion_Notes.api.Controllers
 {
@@ -25,6 +26,7 @@ namespace Gestion_Notes.api.Controllers
             }
             catch (Exception ex)
             {
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
                 return Problem();
             }
         }
@@ -37,8 +39,9 @@ namespace Gestion_Notes.api.Controllers
             {
                 return Ok(await noteService.GetNotes(patientId));
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Error($"{ex.StackTrace} : {ex.Message}");
                 return Problem();
             }
         }

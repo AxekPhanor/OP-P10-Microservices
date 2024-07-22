@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -60,6 +61,11 @@ var dbContextOptions =
     new DbContextOptionsBuilder<MongoDbContext>().UseMongoDB(mongoClient, mongoDb["DatabaseName"]!);
 var db = new MongoDbContext(dbContextOptions.Options);
 builder.Services.AddSingleton(db);
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
+
 
 var app = builder.Build();
 
