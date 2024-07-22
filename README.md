@@ -87,7 +87,7 @@ Le rôle **organizer** vous permet de créer des patients, de modifier leurs inf
 - Implémentation d'un cache sur nos apis.
 - Factoriser le code pour réduire sa complexité donc moins lourd en performances.
 - Mise en place de linter plus strict et orienté sur les pratiques green.
-.
+
 ## Etat du projet
 Le projet est : _Terminé_ ✅
 
