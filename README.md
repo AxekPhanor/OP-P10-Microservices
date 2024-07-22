@@ -84,8 +84,10 @@ Il possède les rôles organizer et practitioner.
 Le rôle **organizer** vous permet de créer des patients, de modifier leurs informations personnelles, ou de les supprimer. Quant au rôle **practitioner**, vous pourrez accéder au dossier d'un patient, comprenant l'historique des notes, le risque de diabète du patient et vous aurez également la possibilité de créer des notes.
 
 ## Recommandations d'amélioration "Green"
-
-
+- Implémentation d'un cache sur nos apis.
+- Factoriser le code pour réduire sa complexité donc moins lourd en performances.
+- Mise en place de linter plus strict et orienté sur les pratiques green.
+.
 ## Etat du projet
 Le projet est : _Terminé_ ✅
 
