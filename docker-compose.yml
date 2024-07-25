@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Gestion-Patients.api/Dockerfile
+    depends_on:
+      - sqlserver
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -50,6 +52,9 @@ services:
     build:
       context: .
       dockerfile: Gestion-Notes.api/Dockerfile
+    depends_on:
+      - sqlserver
+      - mongo
 
   mongo:
     image: mongo:latest
